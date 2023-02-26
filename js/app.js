@@ -1,5 +1,5 @@
 //definitions
-const video = document.getElementById("webcam");
+// const video = document.getElementById("webcam");
 const label = document.getElementById("label");
 const score = document.getElementById("score");
 const featureExtractor = ml5.featureExtractor('MobileNet',{numLabels : 3}, modelLoaded)
@@ -20,6 +20,7 @@ function speak(text) {
     }
 }
 
+
 //file upload
 fileButton.addEventListener("change", (event)=>{
     image.src = URL.createObjectURL(event.target.files[0])
@@ -34,7 +35,7 @@ label.innerText = "Loading Model";
 function modelLoaded() {
     console.log('Model Loaded!')
     classifier = featureExtractor.classification(image, videoReady)
-    classifier.load('model.json', customModelReady)
+    classifier.load('./model/model.json', customModelReady)
 }
 
 //custom model
